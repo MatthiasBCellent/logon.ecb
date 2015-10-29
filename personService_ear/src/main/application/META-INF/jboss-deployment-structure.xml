@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+using individual jar By default, we'll make all artifacts in this ear 
+visible to each other by setting isolation to false -->
+
+<jboss-deployment-structure>
+    <ear-subdeployments-isolated>false</ear-subdeployments-isolated>
+</jboss-deployment-structure>
