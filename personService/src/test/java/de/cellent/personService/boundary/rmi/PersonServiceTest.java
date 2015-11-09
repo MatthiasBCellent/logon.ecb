@@ -38,15 +38,16 @@ public class PersonServiceTest {
 		d.getJobs().add(j2);
 		
 		Person p = new Person();
+		p.setFirstName("Peter");
+		p.setLastName("Pan")
+		;
 		p.getAddresses().add(a1);
 		a1.setPerson(p);
-		
 		p.getAddresses().add(a2);
 		a2.setPerson(p);
 		
 		p.getJobs().add(j1);
 		j1.setPerson(p);
-		
 		p.getJobs().add(j2);
 		j2.setPerson(p);
 		
@@ -61,14 +62,15 @@ public class PersonServiceTest {
 	public void testFindAll() {
 		List<Person> hits = service.findAll(Person.class);
 		for (Person person : hits) {
-			System.out.println(person.getId());
+			System.out.println("PersonID: " + person.getId());
+			System.out.println("AddressID: " + person.getAddresses().iterator().next().getId());
 		}
 	}
 	
 	public static void setup() {
 		try {
 			Context ctx = new InitialContext();
-			service = (PersonService) ctx.lookup("personService/personService_impl-0.0.1-SNAPSHOT/PersonServiceBean!de.cellent.personService.boundary.rmi.PersonService");
+			service = (PersonService) ctx.lookup("ejb:personService/personService_impl-0.0.1-SNAPSHOT/PersonServiceBean!de.cellent.personService.boundary.rmi.PersonService");
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
